@@ -3,8 +3,6 @@ import "./App.css";
 import { useSpring, animated } from "react-spring";
 import SigninForm from './Signin.js'
 import SignupForm from './Signup.js'
-
-
 function Signinup() {
   const [SignupFormStatus, setSignupFormStatus] = useState(false);
   const SigninProps = useSpring({ 
@@ -19,14 +17,14 @@ function Signinup() {
     // borderBottom: SignupFormStatus 
     //   ? "solid 0px transparent"
     //   : "solid 2px #1059FF",  //Animate bottom border of login button
-    backgroundColor: SignupFormStatus ? 'gray' : 'transparent', height: '50%', width: '45%'
+    backgroundColor: SignupFormStatus ? '#80BFFF ' : 'transparent', height: '50%', width: '50%'
     
   });
   const SignupBtnProps = useSpring({
     // borderBottom: SignupFormStatus
     //   ? "solid 2px #1059FF"
     //   : "solid 0px transparent", //Animate bottom border of register button
-      backgroundColor: SignupFormStatus ? 'transparent' : 'gray', height: '50%',width: '43%'
+      backgroundColor: SignupFormStatus ? 'transparent' : '#80BFFF ', height: '50%',width: '50%'
       
   });
 
@@ -46,14 +44,14 @@ function Signinup() {
           id="SigninBtn"
           style={SigninBtnProps}
         >
-          <div class="btn-signin">SIGN IN</div>
+          <div class="btn-signin text-center">SIGN IN</div>
         </animated.button>
         <animated.button
           onClick={SignupClicked}
           id="SignupBtn"
           style={SignupBtnProps}
         >
-          <div class="btn-signup">SIGN UP</div>
+          <div class="btn-signup text-center">SIGN UP</div>
         </animated.button>
       </div>
       <div className="form-group">
@@ -70,10 +68,5 @@ function Signinup() {
     </div>
   );
 }
-
-
-
-
-
 
 export default Signinup;
