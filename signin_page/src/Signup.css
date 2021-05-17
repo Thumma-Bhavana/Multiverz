@@ -10,10 +10,9 @@ html,body, body  {
  }
 
  body {
-    background-image: url(pic.jpg);
-    background-size:  cover;
-    background-position:center center;
     
+     background-color:   #DDDDDD;
+
   }
   .container {
       width: 100%;
@@ -21,8 +20,9 @@ html,body, body  {
       padding-bottom: 0px;
   }
     i {
-    margin-left: -30px;
+    margin-left: -35px;
     cursor: pointer;
+    top:-10px;
     }
 
 
@@ -34,7 +34,9 @@ html,body, body  {
       border-radius: 5px;
       box-shadow: 0px 2px 7px rgba(0,0,0,0.2);
       overflow: hidden;      
-      background-color: rgba(255,255,255, 0.8)!important;
+      /* background-color: rgba(246, 213, 213, 0.8)!important; */
+      background-color: rgba(247, 155, 157, 0.5)!important;
+
       -webkit-animation: bummer 2s;
         animation: zoomIn 2s;
         -webkit-transform: scale(0,0); 
@@ -63,6 +65,7 @@ html,body, body  {
     opacity: 0.9;
     margin-bottom: 3em;
     font-size:14px;
+    font-weight: bold;
   }
   button {
       font-size: 1.5em;
@@ -75,9 +78,9 @@ html,body, body  {
   
     /* form styling */
     .form-group input {
-        width: 90%;
+        width: 100%;
         height: 40px;
-        padding-left: 15px;
+        /*padding-left: 15px; */
         align-items: center;        
         border: 2px solid gray;       
         margin-bottom: 10px;
@@ -86,30 +89,14 @@ html,body, body  {
     .form-group {      
       /* padding-left: 65px; */
       padding-right: 25px;
-      padding-left: 55px;
+      padding-left: 25px;
     /* align-items: center; */
         
     }
-    /* input.submit {
-        font-weight: 700;
-        text-transform: uppercase;
-        font-size: 1em;
-        text-align: center;
-        color: rgba(255,255,255, 1);
-        padding: 8px 0px;
-        width: 80%;
-        height: 40px;
-        border: none;
-        border-radius: 20px;
-        margin-top: 15px;
-        background-color: rgba(16,89,255, 1);
-    
-    } */
-
+  
     /*Form positioning and animation */
 
     form#Signupform {
-        align-items: center;
         top:-560px;
         position:relative;
     }
@@ -122,15 +109,68 @@ html,body, body  {
         transition: all .2s ease;
 
     }
-
+    .signup-btn {
+        color: #fff;
+        background-color: #800000 !important;       
+        font-weight: bold;
+        border: none !important;        
+    }
+    .signup-btn:hover{
+    transform: scale(1.1);
+    background-color: #800000 !important;           
+    }
     .btn-linkedin{
-        background-color:  #0077b5;
+        background-color:  #0077b5 !important;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Century Gothic';
+        border:none !important;
     }
 
     .btn-google{
-        background-color: #dd4b39;
+        background-color: #dd4b39 !important;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Century Gothic';
+        border:none !important;
+
     }
+    .btn-google:hover{
+        transform: scale(1.1); 
+        background-color: #dd4b39 !important;
+   
+        }
 
     .btn-fb{
-        background-color:  #3b5998;
+        background-color:  #3b5998 !important;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Century Gothic';
+        border:none !important;
+
     }
+    .btn-fb:hover{
+        transform: scale(1.1);    
+        background-color:  #3b5998 !important;
+
+        }
+    .btn{
+        text-transform: none;    
+    }
+    .btn:hover{
+
+    }
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-bottom: 1vh;
+    padding-right: 1vw ;
+    color: #800000;
+}
+
+  

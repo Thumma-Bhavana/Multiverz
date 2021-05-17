@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
-import { useSpring, animated } from "react-spring";
-import Signinup from './Signinup.js'
+import Landing from './Landing.js'
 
 class App extends React.Component{
   render(){
-    return(<Signinup/>);
+    return(<Landing/>);
   }
 }
 

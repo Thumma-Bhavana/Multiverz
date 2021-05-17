@@ -4,14 +4,20 @@ import "./main.css";
 import ResetPassword from "./ResetPassword.js"
 import ReactDOM from 'react-dom'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Dashboard from './Dashboard';
+
+
+//import awsconfig from './aws-exports';
+
+//Amplify.configure(awsconfig);
 
 class SigninForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       showPassword : false,
-      // showMessage: false,
+      user : '',
+      value: '',
+      passValue: '',
     }
   }
   loadForgetPassword = () => {
@@ -20,37 +26,50 @@ class SigninForm extends React.Component {
     onClickPasswordHandler = () => {
       this.setState({showPassword:!this.state.showPassword})
     }
-    
-    loadDashboard = (e) => {
-      console.log("loadDashboard clicked")
-       e.preventDefault()
-      ReactDOM.render(<Dashboard/>,document.getElementById("root"));
+
+    emailInput = (event) =>{
+      this.setState({
+        value: event.target.value
+      })
     }
 
-  // showmessage = () =>   {
-  //     this.setState({ showMessage: true });
-  //     setTimeout(
-  //       () => this.setState({ showMessage: false }),
-  //       5000
-  //     );
-  //   }
+    passwordInput = (event) =>{
+      this.setState({
+        passValue: event.target.value
+      })
+    }
+
+    emailMatch() {
+      var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+      console.log(this.state.value)
+      if(this.state.value.match(pattern))
+      {
+         console.log("Pattern Match");
+         
+
+      }
+      else
+      {
+        console.log("Wrong Pattern")
+      }
+
+      
+    }
+    
+   
+
+    // loadDashboard = (e) => {
+      
+    //   console.log("loadDashboard clicked")
+    //    e.preventDefault()
+    //   ReactDOM.render(<Dashboard/>,document.getElementById("root"));
+    // }
+
+
+
   render() {
   return (
-
     <div className="signin">
-      {/* <div>
-        
-        <button onClick={e => {this.showmessage()}}>Show Flash Message</button>
-   
-          { this.state.showMessage &&  
-            <div className="flashdiv">
-             <FlashMessage duration={5000}>
-              <strong>Hello Therichpost!</strong>
-             </FlashMessage>
-           </div>
-           }
-   
-      </div>   */}
       <center>
         Sign in using your Social accounts.<br/><br/>
       </center>
@@ -82,17 +101,19 @@ class SigninForm extends React.Component {
       {/* <h3>-------------------or-------------------</h3>       */}
       {/* <hr/> */}
 
-
       <h5>----- or -----</h5>
       <br/></center>
 
       {/* <React.Fragment> */}
         <center>
-      <form className="col-8 input-form" id="signinForm" action="/dashboard" onSubmit={this.loadDashboard}>  
-        <input type="email"  class="form-control" placeholder="Email Address" id="signinemail" title="eg: username@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>  
+      <form className="col-8 input-form" id="signinForm" >  
+      <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+        <input type="email"  class="form-control" placeholder="Email Address" id="signinemail" title="eg: username@gmail.com" value={this.state.value} onChange={this.emailMatch()} onInput={this.emailInput} required/>  
+        </span>
         {/* <input type="password" id="userpswd" placeholder='Password' minlength="8" required/> */}
         <div className="signinparentpwd">
-        <input type={this.state.showPassword ? "text" : "password"} class="form-control" placeholder="Password" id="password1"  aria-label="Recipient's username" aria-describedby="togglePassword1" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$" required/>
+        <input type={this.state.showPassword ? "text" : "password"} class="form-control" placeholder="Password" id="password1"  onInput={this.passwordInput} aria-label="Recipient's username" aria-describedby="togglePassword1" value={this.state.passValue} pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least 1 number[0-9], 1 capital, 1 letter, 1 special character[Ex:@,#], min 8 or more characters"
+ required/>
         <div className="signinchildpwd">
           {/* <i class="far fa-eye-slash" onClick = {this.onClickPasswordHandler} id="togglePassword1"></i> */}
           {this.state.showPassword ? <FaEye onClick = {this.onClickPasswordHandler}/> : <FaEyeSlash onClick = {this.onClickPasswordHandler}/>}
@@ -102,7 +123,7 @@ class SigninForm extends React.Component {
         <p  className="my-4 signinterms"> By clicking Sign in you agree to our terms of use, and our privacy.</p>
         
         {/* <button className="btn btn-lg btn-primary signup-btn" onClick={this.loadDashboard}> */}
-        <button id="signup-btn" className="btn btn-lg btn-primary signup-btn" type="submit"> 
+        <button id="signup-btn" className="btn btn-lg btn-primary signup-btn"  data-bs-container="body" data-bs-toggle="popover"  data-bs-trigger="hover focus" data-bs-placement="right" data-bs-content="Right popover" type="submit" onClick={this.props.func} > 
         SIGN IN
         </button>       
       </form>      
